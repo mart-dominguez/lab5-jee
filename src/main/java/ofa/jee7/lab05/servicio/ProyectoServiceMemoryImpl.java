@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.martin.lab05.servicio;
+package ofa.jee7.lab05.servicio;
 
-import com.martin.lab05.entidades.Proyecto;
+import ofa.jee7.lab05.entidades.Proyecto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Esta implementación del servicio de gestión de la entidad cliente
+ * Esta implementación del servicio de gestión de la entidad  proyecto
  * guarda los datos en una lista de memoria pero no en una base de datos.
  * 
  * @author mdominguez
@@ -27,29 +27,29 @@ public class ProyectoServiceMemoryImpl implements ProyectoService{
 
 
     @Override
-    public void crear(Proyecto cli) {
-        if(!(cli.getId()!=null &&cli.getId()>0)) cli.setId(_GENERADOR_ID.getAndIncrement());
-        this.listaProyectos.add(cli);
+    public void crear(Proyecto pry) {
+        if(!(pry.getId()!=null &&pry.getId()>0)) pry.setId(_GENERADOR_ID.getAndIncrement());
+        this.listaProyectos.add(pry);
     }
 
     @Override
-    public void actualizar(Proyecto cli) {
-        this.borrar(cli.getId());
-        this.crear(cli);
+    public void actualizar(Proyecto pry) {
+        this.borrar(pry.getId());
+        this.crear(pry);
     }
 
     @Override
     public void borrar(Integer id) {
-        Proyecto cli = new Proyecto();
-        cli.setId(id);
-        this.listaProyectos.remove(cli);
+        Proyecto pry = new Proyecto();
+        pry.setId(id);
+        this.listaProyectos.remove(pry);
     }
 
     @Override
     public Proyecto buscar(Integer id) {
-        Proyecto cliBuscar = new Proyecto();
-        cliBuscar.setId(id);
-        return this.listaProyectos.get(this.listaProyectos.indexOf(cliBuscar));
+        Proyecto pryBuscar = new Proyecto();
+        pryBuscar.setId(id);
+        return this.listaProyectos.get(this.listaProyectos.indexOf(pryBuscar));
     }
 
     @Override

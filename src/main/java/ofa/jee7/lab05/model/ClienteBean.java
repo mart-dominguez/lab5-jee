@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.martin.lab05.model;
+package ofa.jee7.lab05.model;
 
-import com.martin.lab05.entidades.Cliente;
-import com.martin.lab05.servicio.ClienteService;
-import com.martin.lab05.servicio.ClienteServiceMemoryImpl;
+import ofa.jee7.lab05.entidades.Cliente;
+import ofa.jee7.lab05.servicio.ClienteService;
+import ofa.jee7.lab05.servicio.ClienteServiceMemoryImpl;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

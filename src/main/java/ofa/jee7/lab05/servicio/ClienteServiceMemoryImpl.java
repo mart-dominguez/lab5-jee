@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.martin.lab05.servicio;
+package ofa.jee7.lab05.servicio;
 
-import com.martin.lab05.entidades.Cliente;
+import ofa.jee7.lab05.entidades.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
