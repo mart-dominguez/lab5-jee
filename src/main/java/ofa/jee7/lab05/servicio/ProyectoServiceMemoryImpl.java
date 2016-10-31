@@ -9,6 +9,7 @@ import ofa.jee7.lab05.entidades.Proyecto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import ofa.jee7.lab05.entidades.Tarea;
 
 /**
  * Esta implementación del servicio de gestión de la entidad  proyecto
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 
  * @author mdominguez
  */
+
 public class ProyectoServiceMemoryImpl implements ProyectoService{
     
     private List<Proyecto> listaProyectos;
@@ -56,4 +58,13 @@ public class ProyectoServiceMemoryImpl implements ProyectoService{
     public List<Proyecto> listar() {
         return this.listaProyectos;
     }
+    
+        public void agregarTarea(Integer idProyecto,Tarea tarea){
+            Proyecto p = this.buscar(idProyecto);
+            if(p.getTareas()==null){
+                p.setTareas(new ArrayList<Tarea>());
+            }
+            p.getTareas().add(tarea);
+        }
+
 }
