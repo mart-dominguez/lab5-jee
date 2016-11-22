@@ -9,6 +9,7 @@ import ofa.jee7.lab05.entidades.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Esta implementación del servicio de gestión de la entidad cliente
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 
  * @author mdominguez
  */
+@ApplicationScoped
 public class ClienteServiceMemoryImpl implements ClienteService{
     
     private List<Cliente> listaClientes;
