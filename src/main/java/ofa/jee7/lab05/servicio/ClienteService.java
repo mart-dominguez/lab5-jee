@@ -7,11 +7,15 @@ package ofa.jee7.lab05.servicio;
 
 import ofa.jee7.lab05.entidades.Cliente;
 import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author mdominguez
  */
+@Named
+@ApplicationScoped
 public interface ClienteService {
     public void crear(String nombre,String cuit,String email);
     public void crear(Cliente cli);

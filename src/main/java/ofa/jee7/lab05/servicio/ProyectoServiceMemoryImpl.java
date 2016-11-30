@@ -9,6 +9,7 @@ import ofa.jee7.lab05.entidades.Proyecto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import javax.enterprise.context.ApplicationScoped;
 import ofa.jee7.lab05.entidades.Tarea;
 
 /**
@@ -17,7 +18,7 @@ import ofa.jee7.lab05.entidades.Tarea;
  * 
  * @author mdominguez
  */
-
+@ApplicationScoped
 public class ProyectoServiceMemoryImpl implements ProyectoService{
     
     private List<Proyecto> listaProyectos;

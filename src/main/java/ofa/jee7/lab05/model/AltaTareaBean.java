@@ -7,23 +7,13 @@ package ofa.jee7.lab05.model;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import ofa.jee7.lab05.entidades.Tarea;
 
 /**
  *
  * @author mdominguez
  */
-@Named(value = "tareaController")
+@Named(value = "altaTareaController")
 @RequestScoped
-public class TareaBean {
-    private Tarea tarea;
-
-    public Tarea getTarea() {
-        return tarea;
-    }
-
-    public void setTarea(Tarea tarea) {
-        this.tarea = tarea;
-    }
+public class AltaTareaBean {
     
 }

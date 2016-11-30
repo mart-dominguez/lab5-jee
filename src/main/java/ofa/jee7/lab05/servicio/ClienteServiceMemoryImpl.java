@@ -17,6 +17,7 @@ import javax.enterprise.context.ApplicationScoped;
  * 
  * @author mdominguez
  */
+@ApplicationScoped
 public class ClienteServiceMemoryImpl implements ClienteService{
     
     private List<Cliente> listaClientes;
