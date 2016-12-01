@@ -5,9 +5,11 @@
  */
 package ofa.jee7.lab05.model;
 
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import ofa.jee7.lab05.entidades.Cliente;
 import ofa.jee7.lab05.entidades.Proyecto;
 import ofa.jee7.lab05.servicio.ProyectoService;
 
@@ -43,6 +45,7 @@ public class ProyectoBean {
         }
         return null;
     }    
+
     
     public Integer getIdClienteSeleccionado() {
         return idClienteSeleccionado;
@@ -68,4 +71,8 @@ public class ProyectoBean {
     }
     
     
+    
+    public List<Proyecto> getListaProyectos(){
+        return pryService.listar();
+    }
 }

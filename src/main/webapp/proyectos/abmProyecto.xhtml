@@ -11,6 +11,9 @@
         <ui:composition>            
             <h:form id="frmAbmProyecto">
                 <h:panelGrid columns="2">
+                    <h:panelGroup>
+                        <h:messages id="msgs" showDetail="true" ></h:messages>
+                    </h:panelGroup>
                     <h:outputLabel for="txtTituloProyecto" value="Titulo"></h:outputLabel>
                     <h:inputText id="txtTituloProyecto" value="#{proyectoController.proyecto.titulo}"  disabled="#{empty proyectoController.proyecto}"></h:inputText>
                     <h:outputLabel for="txtFechaInicio" value="Fecha Inicio"></h:outputLabel>
@@ -24,19 +27,18 @@
                         <h:selectOneMenu id="cmbCliente" disabled="#{empty proyectoController.proyecto}" value="#{proyectoController.idClienteSeleccionado}">
                             <f:selectItems var="unCliente" value="#{clienteController.listaClientes}" itemLabel="#{unCliente.nombre}" itemValue="#{unCliente.id}"></f:selectItems>
                         </h:selectOneMenu>
-                        <h:commandButton value="Nuevo Cliente" disabled="#{not empty proyectoController.proyecto}" action="#{proyectoController.nuevoProyecto()}"></h:commandButton>
+                        <h:commandButton value="Nuevo Cliente" disabled="#{empty proyectoController.proyecto}" ></h:commandButton>
                     </h:panelGroup>
+                    <h:commandButton value="Nuevo Proyecto" rendered="#{empty proyectoController.proyecto}" disabled="#{not empty proyectoController.proyecto}" action="#{proyectoController.nuevoProyecto()}"></h:commandButton>
+
                 </h:panelGrid>
                 <h:panelGrid columns="3" rendered="#{not empty proyectoController.proyecto}" >
                     <h:commandButton value="Guardar"></h:commandButton>
                     <h:commandButton value="Asignar Tareas"></h:commandButton>
                     <h:commandButton value="Eliminar"></h:commandButton>
-                    <p:commandButton value="Nueva Tarea" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink"></p:commandButton>
                 </h:panelGrid>
             </h:form>
-            <p:dialog header="Nueva Tarea" widgetVar="dlg" >
-                <ui:include src="/tareas/altaTarea.xhtml"></ui:include>
-            </p:dialog>
+
         </ui:composition>
     </body>
 </html>

@@ -5,6 +5,7 @@
  */
 package ofa.jee7.lab05.servicio;
 
+import java.util.ArrayList;
 import ofa.jee7.lab05.entidades.Proyecto;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
@@ -23,6 +24,5 @@ public interface ProyectoService {
     public void borrar(Integer id);
     public Proyecto buscar(Integer id);
     public List<Proyecto> listar();
-    public void agregarTarea(Integer idProyecto,Tarea tarea);
-    
+
 }

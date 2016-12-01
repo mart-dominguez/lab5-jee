@@ -17,6 +17,7 @@ public class Tarea {
     private Boolean completada;
     private Integer horasPlanificadas;
     private Integer horasCompletadas;
+    private Proyecto proyecto;
 
     public Integer getId() {
         return id;
@@ -58,6 +59,16 @@ public class Tarea {
         this.horasCompletadas = horasCompletadas;
     }
 
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 5;

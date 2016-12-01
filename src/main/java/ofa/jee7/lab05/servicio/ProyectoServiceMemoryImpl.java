@@ -60,12 +60,5 @@ public class ProyectoServiceMemoryImpl implements ProyectoService{
         return this.listaProyectos;
     }
     
-        public void agregarTarea(Integer idProyecto,Tarea tarea){
-            Proyecto p = this.buscar(idProyecto);
-            if(p.getTareas()==null){
-                p.setTareas(new ArrayList<Tarea>());
-            }
-            p.getTareas().add(tarea);
-        }
 
 }

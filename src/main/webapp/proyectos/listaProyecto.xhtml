@@ -1,12 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
-        <ui:composition >
-            <h1>Resolver por parte del alumno</h1>          
+<ui:composition >
+            <h:form id="formListaProyectos">
+                <p:growl id="msgs" showDetail="true" />
+                <p:dataTable id="eventsDT" var="unProyecto" value="#{proyectoController.listaProyectos}" selectionMode="single" 
+                             selection="#{clienteController.clienteSeleccionado}" rowKey="#{cliente.id}">
+                    <f:facet name="header">
+                        Lista de proyectos
+                    </f:facet>
+                    <p:ajax event="rowSelect" listener="#{proyectoController.onRowSelect}" update=":formListaProyectos:msgs" />
+                    <p:ajax event="rowUnselect" listener="#{proyectoController.onRowUnselect}" update=":formListaProyectos:msgs" />
+                    <p:column headerText="ID">
+                        <h:outputText value="#{unProyecto.id}" />
+                    </p:column>
+                    <p:column headerText="Titulo">
+                        <h:outputText value="#{unProyecto.titulo}" />
+                    </p:column>
+                    <p:column headerText="Cliente">
+                        <h:outputText value="#{unProyecto.cliente.nombre}" />
+                    </p:column>
+                    <p:column headerText="Fecha">
+                        <h:outputText value="#{unProyecto.fechaInicio}" />
+                    </p:column>
+                    <p:column headerText="Presupuesto">
+                        <h:outputText value="#{unProyecto.presupuestoMaximo}" />
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Nueva Tarea" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink"></p:commandButton>
+                <p:button value="Editar" icon="ui-icon-extlink" outcome="listaProyectos"></p:button>>
+            </h:form>
+                <p:dialog header="Nueva Tarea" widgetVar="dlg" >
+                <ui:include src="/tareas/altaTarea.xhtml"></ui:include>
+            </p:dialog>
         </ui:composition>
 
     </body>
