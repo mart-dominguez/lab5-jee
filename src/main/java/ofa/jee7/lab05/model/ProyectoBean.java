@@ -20,8 +20,52 @@ import ofa.jee7.lab05.servicio.ProyectoService;
 public class ProyectoBean {
     private Proyecto proyecto;
     
+    private Integer idClienteSeleccionado;
+
+    
     @Inject
     private ProyectoService pryService;
+
+    
+    public void init(){
+        
+    }
+    public String nuevoProyecto(){
+        this.proyecto = new Proyecto();
+        return null;
+    }
+
+    public String guardarProyecto(){
+        if(this.proyecto.getId()==null || this.proyecto.getId()==0){
+            this.pryService.crear(proyecto);
+        }else{
+            this.pryService.actualizar(proyecto);
+        }
+        return null;
+    }    
+    
+    public Integer getIdClienteSeleccionado() {
+        return idClienteSeleccionado;
+    }
+
+    public void setIdClienteSeleccionado(Integer idClienteSeleccionado) {
+        this.idClienteSeleccionado = idClienteSeleccionado;
+    }
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
+
+    public ProyectoService getPryService() {
+        return pryService;
+    }
+
+    public void setPryService(ProyectoService pryService) {
+        this.pryService = pryService;
+    }
     
     
 }

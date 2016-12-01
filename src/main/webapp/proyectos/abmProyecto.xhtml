@@ -3,25 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:pt="http://java.sun.com/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
         <ui:composition>            
             <h:form id="frmAbmProyecto">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="txtTituloProyecto" value="Titulo"></h:outputLabel>
-                    <h:inputText id="txtTituloProyecto"></h:inputText>
+                    <h:inputText id="txtTituloProyecto" value="#{proyectoController.proyecto.titulo}"  disabled="#{empty proyectoController.proyecto}"></h:inputText>
                     <h:outputLabel for="txtFechaInicio" value="Fecha Inicio"></h:outputLabel>
-                    <h:inputText id="txtFechaInicio"></h:inputText>
+                    <h:inputText id="txtFechaInicio" value="#{proyectoController.proyecto.fechaInicio}" disabled="#{empty proyectoController.proyecto}" pt:placeholder="dd/MM/yyyy">
+                        <f:convertDateTime pattern="dd/MM/yyyy"  ></f:convertDateTime>
+                    </h:inputText>
                     <h:outputLabel for="txtPresupuestoMaximo" value="Presupuesto Maximo"></h:outputLabel>
-                    <h:inputText id="txtPresupuestoMaximo"></h:inputText>
+                    <h:inputText id="txtPresupuestoMaximo" value="#{proyectoController.proyecto.presupuestoMaximo}" disabled="#{empty proyectoController.proyecto}"></h:inputText>
                     <h:outputLabel for="cmbCliente" value="Cliente"></h:outputLabel>
                     <h:panelGroup>
-                        <h:selectOneMenu id="cmbCliente"></h:selectOneMenu>
-                        <h:commandButton value="Nuevo Cliente"></h:commandButton>
+                        <h:selectOneMenu id="cmbCliente" disabled="#{empty proyectoController.proyecto}" value="#{proyectoController.idClienteSeleccionado}">
+                            <f:selectItems var="unCliente" value="#{clienteController.listaClientes}" itemLabel="#{unCliente.nombre}" itemValue="#{unCliente.id}"></f:selectItems>
+                        </h:selectOneMenu>
+                        <h:commandButton value="Nuevo Cliente" disabled="#{not empty proyectoController.proyecto}" action="#{proyectoController.nuevoProyecto()}"></h:commandButton>
                     </h:panelGroup>
                 </h:panelGrid>
-                <h:panelGrid columns="3">
+                <h:panelGrid columns="3" rendered="#{not empty proyectoController.proyecto}" >
                     <h:commandButton value="Guardar"></h:commandButton>
                     <h:commandButton value="Asignar Tareas"></h:commandButton>
                     <h:commandButton value="Eliminar"></h:commandButton>
@@ -29,7 +35,7 @@
                 </h:panelGrid>
             </h:form>
             <p:dialog header="Nueva Tarea" widgetVar="dlg" >
-                <ui:include src="/tareas/wizardTarea.xhtml"></ui:include>
+                <ui:include src="/tareas/altaTarea.xhtml"></ui:include>
             </p:dialog>
         </ui:composition>
     </body>
