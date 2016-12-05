@@ -5,6 +5,7 @@
  */
 package ofa.jee7.lab05.servicio;
 
+import java.io.Serializable;
 import ofa.jee7.lab05.entidades.Cliente;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import javax.enterprise.context.ApplicationScoped;
  * @author mdominguez
  */
 @ApplicationScoped
-public class ClienteServiceMemoryImpl implements ClienteService{
+public class ClienteServiceMemoryImpl implements ClienteService, Serializable{
     
     private List<Cliente> listaClientes;
     private static final AtomicInteger _GENERADOR_ID = new AtomicInteger(0); 

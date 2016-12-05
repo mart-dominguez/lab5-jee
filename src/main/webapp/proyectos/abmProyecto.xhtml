@@ -4,16 +4,16 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:pt="http://java.sun.com/jsf/passthrough"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
         <ui:composition>            
-            <h:form id="frmAbmProyecto">
+            <h:form id="frmAbmProyecto">                
+                <h:messages id="msgs" showDetail="true"  ></h:messages>
                 <h:panelGrid columns="2">
-                    <h:panelGroup>
-                        <h:messages id="msgs" showDetail="true" ></h:messages>
-                    </h:panelGroup>
+                    <f:facet name="header">
+                        <h1>Editar proyectos</h1>
+                    </f:facet>
                     <h:outputLabel for="txtTituloProyecto" value="Titulo"></h:outputLabel>
                     <h:inputText id="txtTituloProyecto" value="#{proyectoController.proyecto.titulo}"  disabled="#{empty proyectoController.proyecto}"></h:inputText>
                     <h:outputLabel for="txtFechaInicio" value="Fecha Inicio"></h:outputLabel>
@@ -21,7 +21,7 @@
                         <f:convertDateTime pattern="dd/MM/yyyy"  ></f:convertDateTime>
                     </h:inputText>
                     <h:outputLabel for="txtPresupuestoMaximo" value="Presupuesto Maximo"></h:outputLabel>
-                    <h:inputText id="txtPresupuestoMaximo" value="#{proyectoController.proyecto.presupuestoMaximo}" disabled="#{empty proyectoController.proyecto}"></h:inputText>
+                    <h:inputText required="true" id="txtPresupuestoMaximo" value="#{proyectoController.proyecto.presupuestoMaximo}" disabled="#{empty proyectoController.proyecto}"></h:inputText>
                     <h:outputLabel for="cmbCliente" value="Cliente"></h:outputLabel>
                     <h:panelGroup>
                         <h:selectOneMenu id="cmbCliente" disabled="#{empty proyectoController.proyecto}" value="#{proyectoController.idClienteSeleccionado}">
@@ -30,12 +30,14 @@
                         <h:commandButton value="Nuevo Cliente" disabled="#{empty proyectoController.proyecto}" ></h:commandButton>
                     </h:panelGroup>
                     <h:commandButton value="Nuevo Proyecto" rendered="#{empty proyectoController.proyecto}" disabled="#{not empty proyectoController.proyecto}" action="#{proyectoController.nuevoProyecto()}"></h:commandButton>
+                    <h:panelGroup>
+                        <h:commandButton value="Guardar" rendered="#{not empty proyectoController.proyecto}" action="#{proyectoController.guardarProyecto}"></h:commandButton>
+                        <h:commandButton value="Eliminar" rendered="#{not empty proyectoController.proyecto}" action="#{proyectoController.borrarProyecto()}"></h:commandButton>
+                    </h:panelGroup>
+                    <f:facet name="footer">
+                        <h:link value="Ver Lista de Proyectos Creados" outcome="listaProyectos"></h:link>
+                    </f:facet>
 
-                </h:panelGrid>
-                <h:panelGrid columns="3" rendered="#{not empty proyectoController.proyecto}" >
-                    <h:commandButton value="Guardar"></h:commandButton>
-                    <h:commandButton value="Asignar Tareas"></h:commandButton>
-                    <h:commandButton value="Eliminar"></h:commandButton>
                 </h:panelGrid>
             </h:form>
 

@@ -5,6 +5,7 @@
  */
 package ofa.jee7.lab05.servicio;
 
+import java.io.Serializable;
 import ofa.jee7.lab05.entidades.Tarea;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import ofa.jee7.lab05.entidades.Tarea;
  * @author mdominguez
  */
 @ApplicationScoped
-public class TareaServiceMemoryImpl implements TareaService{
+public class TareaServiceMemoryImpl implements TareaService, Serializable{
     
     @Inject 
     private ProyectoService pryServ;

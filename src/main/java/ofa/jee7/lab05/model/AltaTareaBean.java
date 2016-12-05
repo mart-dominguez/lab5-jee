@@ -5,13 +5,15 @@
  */
 package ofa.jee7.lab05.model;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import ofa.jee7.lab05.entidades.Tarea;
-import ofa.jee7.lab05.servicio.ProyectoService;
 import ofa.jee7.lab05.servicio.TareaService;
+import ofa.jee7.lab05.util.MyCustomLogger;
 
 /**
  *
@@ -22,6 +24,9 @@ import ofa.jee7.lab05.servicio.TareaService;
 public class AltaTareaBean {
     private Tarea tarea;
     
+    @Inject @MyCustomLogger
+    private transient Logger myLog;
+
     @Inject
     private TareaService tarSrv;
     
@@ -29,10 +34,13 @@ public class AltaTareaBean {
     
     @PostConstruct
     public void init(){
+        myLog.log(Level.INFO,"Inicio alta tarea");
         this.tarea = new Tarea();
     }
     
     public void guardarTarea(){
+        myLog.log(Level.INFO,"guarda tarea"+this.tarea);
+        myLog.log(Level.INFO,"guarda tarea en proyecto"+this.pryBean.getProyecto());        
         this.tarSrv.asignarProyecto(pryBean.getProyecto().getId(), tarea);
     }
 

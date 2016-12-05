@@ -13,7 +13,7 @@
                 <p:outputLabel for="tarHsPresup" value="Horas Planificadas:"></p:outputLabel>
                 <p:spinner id="tarHsPresup"  value="#{tareaController.tarea.horasPlanificadas}" prefix="Hs" min="2" stepFactor="4" />
             </h:panelGrid>
-            <p:commandButton value="Guardar" actionListener="#{altaTareaController.guardarTarea()}" oncomplete="PF('dlg').hide();" update=":frmAbmProyecto"></p:commandButton>
+            <p:commandButton value="Guardar" actionListener="#{altaTareaController.guardarTarea()}" oncomplete="PF('dlg').hide();" update=":formListaProyectos"></p:commandButton>
         </ui:composition>
     </body>
 </html>

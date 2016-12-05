@@ -12,7 +12,7 @@
             <h:form id="formListaProyectos">
                 <p:growl id="msgs" showDetail="true" />
                 <p:dataTable id="eventsDT" var="unProyecto" value="#{proyectoController.listaProyectos}" selectionMode="single" 
-                             selection="#{clienteController.clienteSeleccionado}" rowKey="#{cliente.id}">
+                             selection="#{proyectoController.proyecto}" rowKey="#{unProyecto.id}">
                     <f:facet name="header">
                         Lista de proyectos
                     </f:facet>
@@ -33,13 +33,16 @@
                     <p:column headerText="Presupuesto">
                         <h:outputText value="#{unProyecto.presupuestoMaximo}" />
                     </p:column>
+                    <p:column headerText="Tareas Cargadas">
+                        <h:outputText value="#{unProyecto.tareas.size()}" />
+                    </p:column>
                 </p:dataTable>
                 <p:commandButton value="Nueva Tarea" onclick="PF('dlg').show();" type="button" icon="ui-icon-extlink"></p:commandButton>
                 <p:button value="Editar" icon="ui-icon-extlink" outcome="listaProyectos"></p:button>>
-            </h:form>
                 <p:dialog header="Nueva Tarea" widgetVar="dlg" >
-                <ui:include src="/tareas/altaTarea.xhtml"></ui:include>
-            </p:dialog>
+                    <ui:include src="/tareas/altaTarea.xhtml"></ui:include>
+                </p:dialog>
+            </h:form>
         </ui:composition>
 
     </body>

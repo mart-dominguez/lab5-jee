@@ -5,6 +5,8 @@
  */
 package ofa.jee7.lab05.model;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Init;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import ofa.jee7.lab05.entidades.Tarea;
@@ -18,6 +20,10 @@ import ofa.jee7.lab05.entidades.Tarea;
 public class TareaBean {
     private Tarea tarea;
 
+    @PostConstruct
+    public void init(){
+        this.tarea = new Tarea();
+    }
     public Tarea getTarea() {
         return tarea;
     }

@@ -94,6 +94,11 @@ public class Proyecto {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Proyecto{" + "id=" + id + ", titulo=" + titulo + ", fechaInicio=" + fechaInicio + ", cliente=" + cliente + ", presupuestoMaximo=" + presupuestoMaximo + '}';
+    }
     
     
 }

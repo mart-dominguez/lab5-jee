@@ -21,6 +21,11 @@ public class Cliente {
         return cuit;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + ", cuit=" + cuit + ", proyecto=" + proyecto + '}';
+    }
+
     public void setCuit(String cuit) {
         this.cuit = cuit;
     }

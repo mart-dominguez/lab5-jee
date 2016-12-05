@@ -5,6 +5,7 @@
  */
 package ofa.jee7.lab05.servicio;
 
+import java.io.Serializable;
 import ofa.jee7.lab05.entidades.Proyecto;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import ofa.jee7.lab05.entidades.Tarea;
  * @author mdominguez
  */
 @ApplicationScoped
-public class ProyectoServiceMemoryImpl implements ProyectoService{
+public class ProyectoServiceMemoryImpl implements ProyectoService,Serializable{
     
     private List<Proyecto> listaProyectos;
     private static final AtomicInteger _GENERADOR_ID = new AtomicInteger(0); 
@@ -31,7 +32,8 @@ public class ProyectoServiceMemoryImpl implements ProyectoService{
 
     @Override
     public void crear(Proyecto pry) {
-        if(!(pry.getId()!=null &&pry.getId()>0)) pry.setId(_GENERADOR_ID.getAndIncrement());
+        if(!(pry.getId()!=null &&pry.getId()<=0)) pry.setId(_GENERADOR_ID.getAndIncrement());
+        
         this.listaProyectos.add(pry);
     }
 
