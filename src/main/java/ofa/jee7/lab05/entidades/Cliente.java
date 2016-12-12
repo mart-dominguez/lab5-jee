@@ -6,14 +6,23 @@
 package ofa.jee7.lab05.entidades;
 
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author mdominguez
  */
+@Entity
 public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
+    @Column(name="CORREO_ELECTRONICO")
     private String correoElectronico;
     private String cuit;
 

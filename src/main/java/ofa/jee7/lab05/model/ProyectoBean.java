@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import ofa.jee7.lab05.entidades.Proyecto;
 import ofa.jee7.lab05.servicio.ProyectoService;
+import ofa.jee7.lab05.servicio.ServiceJPA;
 import ofa.jee7.lab05.util.MyCustomLogger;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
@@ -34,6 +35,10 @@ public class ProyectoBean implements Serializable{
     
     private Integer idClienteSeleccionado;
 
+        
+    @Inject @ServiceJPA
+    private ProyectoService pryService;
+    
     @Inject @MyCustomLogger
     private transient Logger myLog;
 
@@ -44,9 +49,7 @@ public class ProyectoBean implements Serializable{
     public void setMyLog(Logger myLog) {
         this.myLog = myLog;
     }
-    
-    @Inject
-    private ProyectoService pryService;
+
 
     @PostConstruct
     public void init(){     

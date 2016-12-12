@@ -12,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import ofa.jee7.lab05.entidades.Tarea;
+import ofa.jee7.lab05.servicio.ServiceJPA;
 import ofa.jee7.lab05.servicio.TareaService;
 import ofa.jee7.lab05.util.MyCustomLogger;
 
@@ -27,7 +28,7 @@ public class AltaTareaBean {
     @Inject @MyCustomLogger
     private transient Logger myLog;
 
-    @Inject
+    @Inject @ServiceJPA
     private TareaService tarSrv;
     
     @Inject ProyectoBean pryBean;

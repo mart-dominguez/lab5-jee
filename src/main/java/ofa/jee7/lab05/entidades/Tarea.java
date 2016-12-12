@@ -6,17 +6,32 @@
 package ofa.jee7.lab05.entidades;
 
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author mdominguez
  */
+@Entity
 public class Tarea {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private Boolean completada;
+    @Column(name="HORAS_PLANIFICADAS")
     private Integer horasPlanificadas;
+    @Column(name="HORAS_COMPLETADAS")
     private Integer horasCompletadas;
+    
+    @ManyToOne
+    @JoinColumn(name = "ID_PROYECTO")
     private Proyecto proyecto;
 
     public Integer getId() {

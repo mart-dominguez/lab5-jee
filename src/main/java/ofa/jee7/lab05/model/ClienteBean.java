@@ -17,6 +17,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import ofa.jee7.lab05.servicio.ClienteServiceJDBC;
+import ofa.jee7.lab05.servicio.ServiceJPA;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
@@ -28,7 +29,9 @@ import org.primefaces.event.UnselectEvent;
 @SessionScoped
 public class ClienteBean implements Serializable{
     
-    @Inject @ClienteServiceJDBC
+    @Inject 
+    @ServiceJPA
+    //@ClienteServiceJDBC
     private ClienteService cliService;
     private Cliente clienteSeleccionado;
     

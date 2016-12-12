@@ -8,6 +8,8 @@ package ofa.jee7.lab05.util;
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
 /**
@@ -20,4 +22,8 @@ public class ProductorRecursos {
     @Produces @ProyectosDB
     @Resource(lookup ="jdbc/proyectos")
     DataSource proyectosDatabase;
+    
+    @Produces @ProyectosEM
+    @PersistenceContext(unitName = "GESTION_PROYECTOS_PU")
+    EntityManager em;
 }

@@ -8,16 +8,29 @@ package ofa.jee7.lab05.entidades;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author mdominguez
  */
+@Entity
 public class Proyecto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String titulo;
     private Date fechaInicio;
+    @ManyToOne
+    @JoinColumn(name="ID_CLIENTE")
     private Cliente cliente;
+    @OneToMany(mappedBy = "proyecto")
     private List<Tarea> tareas;
     private Double presupuestoMaximo;
 
