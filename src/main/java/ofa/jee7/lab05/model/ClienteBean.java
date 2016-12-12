@@ -14,7 +14,9 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
+import ofa.jee7.lab05.servicio.ClienteServiceJDBC;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
@@ -26,12 +28,14 @@ import org.primefaces.event.UnselectEvent;
 @SessionScoped
 public class ClienteBean implements Serializable{
     
+    @Inject @ClienteServiceJDBC
     private ClienteService cliService;
     private Cliente clienteSeleccionado;
     
     @PostConstruct
     public void init(){
-        cliService= new ClienteServiceMemoryImpl();
+       // AHORA LO INYECTAMOS!!!
+       // cliService= new ClienteServiceMemoryImpl();
     }
     
     public void guardar(){
